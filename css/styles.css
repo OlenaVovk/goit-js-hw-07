@@ -43,6 +43,12 @@
   cursor: zoom-in;
 }
 
+.modal-img:hover {
+  cursor: zoom-out;
+}
+
+ /* ... for 3-gallery ... */  
+
 #lightbox {
   position: fixed;
   z-index: 1111;

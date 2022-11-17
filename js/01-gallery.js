@@ -24,16 +24,23 @@ function clickHendler (evt){
         return;
     }
 
-    const images = document.querySelectorAll('img');
-
-    images.forEach((image) =>{
-    
     const instance = basicLightbox.create(`<div class="modal">
-        <img src="${evt.target.dataset.source}" alt="Big img"/>
-    </div>`, {closable: true});
-    instance.show();
+        <img class="modal-img" src="${evt.target.dataset.source}" alt="Big img"/>
+    </div>`,{
+	closable: false
     });
-   
+    instance.show();
+     
+    const imageEl = document.querySelector('.modal-img');
+
+    
+    imageEl.addEventListener ('click', (evt) =>{
+        if (evt.target.nodeName !== "IMG"){
+        return;
+        }
+        instance.close();
+    })
+
 }
  
 
