@@ -20,9 +20,10 @@ lightbox.id = 'lightbox';
 
 document.body.appendChild(lightbox);
 
-ulEl.addEventListener('click', clickHendler);
+ulEl.addEventListener('click', clickOpenModalHendler);
+lightbox.addEventListener('click', clickCloseModalHendler);
 
-function clickHendler (evt){
+function clickOpenModalHendler (evt){
     evt.preventDefault();
 
     if (evt.target.nodeName !== "IMG"){
@@ -39,11 +40,29 @@ function clickHendler (evt){
         }
         lightbox.append(img);
     })
-}
 
-lightbox.addEventListener('click', (evt) => {
+    window.addEventListener('keydown', onEscPress);
+     
+};
+
+
+function clickCloseModalHendler (evt) {
+    
     if (evt.target.nodeName !== "IMG"){
+        window.removeEventListener('keydown', onEscPress);
         return;
     }
     lightbox.classList.remove('active');
-});
+
+  
+};
+
+
+function onEscPress (evt) {
+        console.log(evt.code);
+        if (evt.code === 'Escape'){
+            console.log('close');
+            clickCloseModalHendler();
+            
+        }
+    }

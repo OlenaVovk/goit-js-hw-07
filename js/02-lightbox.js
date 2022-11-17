@@ -19,7 +19,7 @@ insertListItems(renderList(galleryItems));
 
 ulEl.addEventListener('click', clickHendler);
 
-function clickHendler (evt){
+function clickHendler (evt){ 
     evt.preventDefault();
 
     if (evt.target.nodeName !== "IMG"){
@@ -28,10 +28,12 @@ function clickHendler (evt){
 
    let gallery = new SimpleLightbox('.gallery a', {
     captions: true,
-    captionType: 'text',
-    captionsData: 'fghfghjklhjl;mjjk',
+    captionsData: 'alt',
     captionDelay: 250,
+    widthRatio: 0.95,
+    heightRatio: 0.95,
    });
     gallery.on('show.simplelightbox');
+
 
 }
