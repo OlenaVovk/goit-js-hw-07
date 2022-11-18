@@ -17,24 +17,14 @@ const insertListItems = (string => {
 
 insertListItems(renderList(galleryItems));
 
-ulEl.addEventListener('click', clickHendler);
-
-function clickHendler (evt){ 
-    evt.preventDefault();
-
-    if (evt.target.nodeName !== "IMG"){
-        return;
-    }
-
-   let gallery = new SimpleLightbox('.gallery a', {
-    captions: true,
+let gallery = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
     captionDelay: 250,
     widthRatio: 0.95,
     heightRatio: 0.95,
-   });
-    gallery.on('show.simplelightbox');
-}
+});
+   
+   
+   
 
-const galleryEls = document.querySelectorAll('a');
-console.log(galleryEls);
+
