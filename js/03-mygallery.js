@@ -17,7 +17,6 @@ insertListItems(ulEl, renderList(galleryItems));
 
 const lightbox = document.createElement('div');
 lightbox.id = 'lightbox';
-
 document.body.appendChild(lightbox);
 
 ulEl.addEventListener('click', clickOpenModalHendler);
@@ -41,28 +40,25 @@ function clickOpenModalHendler (evt){
         lightbox.append(img);
     })
 
-    window.addEventListener('keydown', onEscPress);
-     
+   
+    document.addEventListener('keydown', onEscPress);
+    
 };
 
 
 function clickCloseModalHendler (evt) {
     
     if (evt.target.nodeName !== "IMG"){
-        window.removeEventListener('keydown', onEscPress);
-        return;
+        return
     }
-    lightbox.classList.remove('active');
 
-  
+    lightbox.classList.remove('active'); 
+    document.removeEventListener('keydown', onEscPress);
 };
 
 
 function onEscPress (evt) {
-        console.log(evt.code);
-        if (evt.code === 'Escape'){
-            console.log('close');
-            clickCloseModalHendler();
-            
-        }
-    }
+    if (evt.code === 'Escape'){
+      lightbox.classList.remove('active');  
+    };  
+}
