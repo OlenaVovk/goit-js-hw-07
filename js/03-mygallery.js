@@ -40,11 +40,9 @@ function clickOpenModalHendler (evt){
         lightbox.append(img);
     })
 
-   
     document.addEventListener('keydown', onEscPress);
     
 };
-
 
 function clickCloseModalHendler (evt) {
     
@@ -55,7 +53,6 @@ function clickCloseModalHendler (evt) {
     lightbox.classList.remove('active'); 
     document.removeEventListener('keydown', onEscPress);
 };
-
 
 function onEscPress (evt) {
     if (evt.code === 'Escape'){
