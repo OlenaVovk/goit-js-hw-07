@@ -25,7 +25,7 @@ function clickOpenModalHendler (evt){
     }
 
     const instance = basicLightbox.create(`<div class="modal">
-        <img class="modal-img" src="${evt.target.dataset.source}" alt="Big img"/>
+        <img class="modal-img" src="${evt.target.dataset.source}" alt="Big img" height = "550px"/>
     </div>`,{
 	closable: false
     });
