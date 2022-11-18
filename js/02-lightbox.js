@@ -34,6 +34,7 @@ function clickHendler (evt){
     heightRatio: 0.95,
    });
     gallery.on('show.simplelightbox');
-
-
 }
+
+const galleryEls = document.querySelectorAll('a');
+console.log(galleryEls);

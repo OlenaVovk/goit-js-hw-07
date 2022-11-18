@@ -15,9 +15,9 @@ const insertListItems = (string => {
 
 insertListItems(renderList(galleryItems));
 
-divEl.addEventListener('click', clickHendler);
+divEl.addEventListener('click', clickOpenModalHendler);
 
-function clickHendler (evt){
+function clickOpenModalHendler (evt){
     evt.preventDefault();
 
     if (evt.target.nodeName !== "IMG"){
@@ -30,17 +30,18 @@ function clickHendler (evt){
 	closable: false
     });
     instance.show();
-     
+    
     const imageEl = document.querySelector('.modal-img');
 
-    
-    imageEl.addEventListener ('click', (evt) =>{
-        if (evt.target.nodeName !== "IMG"){
-        return;
-        }
-        instance.close();
-    })
+    imageEl.addEventListener ('click', clickCloseModalHendler); 
+    document.addEventListener('keydown', clickCloseModalHendler ); 
 
+    function clickCloseModalHendler (evt){
+        if (evt.code === 'Escape' || evt.target.nodeName === "IMG"){
+           instance.close(); 
+           document.removeEventListener('keydown', clickCloseModalHendler); 
+        }     
+    }
 }
  
 
