@@ -5,9 +5,9 @@ console.log(galleryItems);
 
 const renderList = (images) => 
     images.reduce((acc, {preview, original, description}) => 
-    acc + `<a class="gallery__item" href="${original}">
+    acc + `<li><a class="gallery__item" href="${original}">
     <img class="gallery__image" src="${preview}" alt="${description}" />
-</a>`, '');
+</a></li>`, '');
 
 const ulEl = document.querySelector('ul.gallery');
 
@@ -19,6 +19,7 @@ insertListItems(renderList(galleryItems));
 
 let gallery = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
+    captionPosition: 'bottom',
     captionDelay: 250,
     widthRatio: 0.95,
     heightRatio: 0.95,

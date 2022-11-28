@@ -27,22 +27,30 @@ function clickOpenModalHendler (evt){
     const instance = basicLightbox.create(`<div class="modal">
         <img class="modal-img" src="${evt.target.dataset.source}" alt="Big img" height = "750px"/>
     </div>`,{
-	closable: false
+	    closable: false,
+        onShow: (instance) => { 
+            document.addEventListener('keydown', clickCloseModalHendler ); 
+        },
+        onClose: (instance) => {
+            document.removeEventListener('keydown', clickCloseModalHendler); 
+        },
     });
     instance.show();
-    
+
     const imageEl = document.querySelector('.modal-img');
-
     imageEl.addEventListener ('click', clickCloseModalHendler); 
-    document.addEventListener('keydown', clickCloseModalHendler ); 
-
+    
     function clickCloseModalHendler (evt){
         if (evt.code === 'Escape' || evt.target.nodeName === "IMG"){
            instance.close(); 
-           document.removeEventListener('keydown', clickCloseModalHendler); 
         }     
     }
 }
+    
+    
+
  
 
 
+	
+	
